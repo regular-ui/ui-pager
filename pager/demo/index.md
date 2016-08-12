@@ -33,7 +33,27 @@
 <pager current=6 total=11 disabled />
 ```
 
+### 数据绑定
+
+<div class="m-example"></div>
+
+```xml
+<pager current={current} total=11 />
+<p><span>当前页：{current}</span></p>
+<a class="u-btn u-btn-info" on-click={current -= 1}>上一页</a>
+<a class="u-btn u-btn-info" on-click={current += 1}>下一页</a>
+```
+
+```javascript
+let component = new RGUI.Component({
+    template,
+    data: {current: 6},
+});
+```
+
 ### 事件
+
+请打开浏览器的控制台查看结果。
 
 <div class="m-example"></div>
 

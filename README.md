@@ -21,8 +21,7 @@ Regular UI - Pager
 
 ## Pager（分页器）
 
-- 基础示例+API: https://regular-ui.github.io/ui-pager/pager/index.html
-- 进阶案例: https://regular-ui.github.io/ui-pager/pager/case.html
+- 基础示例+进阶案例+API: https://regular-ui.github.io/ui-pager/pager/index.html
 
 ## Copyright and License
 

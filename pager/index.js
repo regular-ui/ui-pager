@@ -67,18 +67,20 @@ const Pager = Component.extend({
             /**
              * @event change 选择值改变时触发
              * @property {object} sender 事件发送对象
-             * @property {var} current 改变后的选择页
+             * @property {number} current 改变后的选择页
+             * @property {number} total 总页数
              */
             this.$emit('change', {
                 sender: this,
                 current: newValue,
+                total: this.data.total,
             });
         });
     },
     /**
      * @method select(page) 选择某一页
      * @public
-     * @param  {object} page 选择页
+     * @param  {number} page 选择页
      * @return {void}
      */
     select(page) {
@@ -95,11 +97,13 @@ const Pager = Component.extend({
         /**
          * @event select 选择某一页时触发
          * @property {object} sender 事件发送对象
-         * @property {object} current 当前选择页
+         * @property {number} current 当前选择页
+         * @property {number} total 总页数
          */
         this.$emit('select', {
             sender: this,
             current: this.data.current,
+            total: this.data.total,
         });
     },
 });
