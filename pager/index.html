@@ -58,7 +58,21 @@
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">pager</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">total</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">disabled</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
 </code></pre>
+<h3 id="数据绑定">数据绑定</h3>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">pager</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">{current}</span> <span class="cm-attribute">total</span>=<span class="cm-attribute">11</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>当前页：{current}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-info&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{current</span> <span class="cm-attribute">-</span>= <span class="cm-attribute">1}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>上一页<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-info&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{current</span> <span class="cm-attribute">+</span>= <span class="cm-attribute">1}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>下一页<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">let</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>,
+    <span class="cm-property">data</span>: {<span class="cm-property">current</span>: <span class="cm-number">6</span>},
+});
+</code></pre>
 <h3 id="事件">事件</h3>
+<p>请打开浏览器的控制台查看结果。</p>
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">pager</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">total</span>=<span class="cm-attribute">11</span>
@@ -121,7 +135,7 @@
         <tbody>
             
                 
-                <tr><td class="f-wsn"><code>page</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td>选择页</td></tr>
+                <tr><td class="f-wsn"><code>page</code></td><td class="f-wsn">number</td><td class="f-wsn"></td><td>选择页</td></tr>
                 
             
         </tbody>
@@ -159,7 +173,9 @@
                 
                 <tr><td class="f-wsn"><code>sender</code></td><td class="f-wsn">object</td><td class="f-wsn">事件发送对象</td></tr>
                 
-                <tr><td class="f-wsn"><code>current</code></td><td class="f-wsn">var</td><td class="f-wsn">改变后的选择页</td></tr>
+                <tr><td class="f-wsn"><code>current</code></td><td class="f-wsn">number</td><td class="f-wsn">改变后的选择页</td></tr>
+                
+                <tr><td class="f-wsn"><code>total</code></td><td class="f-wsn">number</td><td class="f-wsn">总页数</td></tr>
                 
             
         </tbody>
@@ -177,7 +193,9 @@
                 
                 <tr><td class="f-wsn"><code>sender</code></td><td class="f-wsn">object</td><td class="f-wsn">事件发送对象</td></tr>
                 
-                <tr><td class="f-wsn"><code>current</code></td><td class="f-wsn">object</td><td class="f-wsn">当前选择页</td></tr>
+                <tr><td class="f-wsn"><code>current</code></td><td class="f-wsn">number</td><td class="f-wsn">当前选择页</td></tr>
+                
+                <tr><td class="f-wsn"><code>total</code></td><td class="f-wsn">number</td><td class="f-wsn">总页数</td></tr>
                 
             
         </tbody>
@@ -236,6 +254,14 @@ var index = 0;
     var template = "<pager current=6 total=11 disabled />";
     var component = new RGUI.Component({
         template: template
+    });
+    component && component.$inject($$(".m-example")[index]);
+})(index++);
+(function (index) {
+    var template = "<pager current={current} total=11 />\n<p><span>当前页：{current}</span></p>\n<a class=\"u-btn u-btn-info\" on-click={current -= 1}>上一页</a>\n<a class=\"u-btn u-btn-info\" on-click={current += 1}>下一页</a>";
+    var component = new RGUI.Component({
+        template: template,
+        data: { current: 6 }
     });
     component && component.$inject($$(".m-example")[index]);
 })(index++);
