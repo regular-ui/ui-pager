@@ -23,7 +23,7 @@ const Pager = Component.extend({
      * @override
      */
     config() {
-        this.data = Object.assign({
+        this.defaults({
             current: 1,
             total: 11,
             position: 'center',
@@ -31,7 +31,7 @@ const Pager = Component.extend({
             side: 2,
             _start: 1,
             _end: 5,
-        }, this.data);
+        });
         this.supr();
         this.watch();
     },
