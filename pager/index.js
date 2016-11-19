@@ -63,7 +63,7 @@ const Pager = Component.extend({
             this.data.side = +side;
         });
 
-        this.$watch('current', (newValue, oldValue) => {
+        this.$watch('current', (current) => {
             /**
              * @event change 选择值改变时触发
              * @property {object} sender 事件发送对象
@@ -72,7 +72,7 @@ const Pager = Component.extend({
              */
             this.$emit('change', {
                 sender: this,
-                current: newValue,
+                current,
                 total: this.data.total,
             });
         });

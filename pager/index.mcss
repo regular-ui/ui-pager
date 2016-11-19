@@ -9,12 +9,15 @@ $m-pager_li_a_size = 32px;
 // ========================================================================
 
 .m-pager {
-    font-size: 12px;
+    font-size: 0;
 
     > li {
+        font-size: 12px;
+
         > a, > span {
-            padding: 0 12px;
-            min-width: $m-pager_li_a_size - 12px*2;
+            $box-sizing: border-box;
+            padding: 0 10px;
+            min-width: $m-pager_li_a_size;
             $line-height: $m-pager_li_a_size;
             color: $color-base;
         }
@@ -52,11 +55,11 @@ $m-pager_li_a_size = 32px;
         margin-left: -1px;
     }
 
-    > li:first-child > a {
+    > li.pager_prev > a {
         $border-radius: $border-radius-base 0 0 $border-radius-base;
     }
 
-    > li:last-child > a {
+    > li.pager_next > a {
         $border-radius: 0 $border-radius-base $border-radius-base 0;
     }
 }

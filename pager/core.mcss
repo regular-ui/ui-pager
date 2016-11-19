@@ -6,7 +6,6 @@
     text-align: center;
     // - Remove default list style
     @extend .f-lsn;
-    @extend .f-lsi;
     $user-select: none;
 
     @extend .f-wsn;
@@ -26,7 +25,9 @@
         > a:active {}
     }
 
-    >li.z-crt > a {}
+    >li.z-crt {
+        position: relative;
+    }
 
     >li.z-dis > a {
         cursor: not-allowed;
