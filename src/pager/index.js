@@ -3,8 +3,8 @@ import template from './index.rgl';
 
 /**
  * @class Pager
- * @extend Component
- * @param {object}                  options.data                     =  绑定属性
+ * @extends Component
+ * @param {Object}                  options.data                     =  绑定属性
  * @param {number=1}                options.data.current            <=> 当前页
  * @param {total=11}                options.data.total               => 总页数
  * @param {string='center'}         options.data.position            => 分页的位置，可选参数：`center`、`left`、`right`
